@@ -42,6 +42,6 @@
     };
     for(var t=[],p=0;s.n>p;p++){
         var h=a()*r,g=a()*n,q=2*a()-1,d=2*a()-1;
-        t.push({x:h,y:g,xa:q,ya:d,max:6000})//最后一个为与其他粒子的最远连线距离，默认6000
+        t.push({x:h,y:g,xa:q,ya:d,max:5000})//最后一个为与其他粒子的最远连线距离，默认6000
     }setTimeout(function(){b()},100)
 }();

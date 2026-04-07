@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <p></p>
+    <script>
+        // 1. 定义图片列表
+        const images = [
+            "/picture/fj/1.jpg",
+            "/picture/fj/2.jpg",
+            "/picture/fj/3.jpg",
+            "/picture/fj/4.jpg",
+            "/picture/fj/5.jpg",
+            "/picture/fj/6.jpg",
+            "/picture/fj/7.jpg",
+            "/picture/fj/8.jpg",
+            "/picture/fj/9.jpg",
+            "/picture/fj/10.jpg",
+            "/picture/fj/11.jpg",
+            "/picture/fj/12.jpg",
+            "/picture/fj/13.jpg",
+            "/picture/fj/14.jpg",
+            "/picture/fj/15.jpg",
+            "/picture/fj/16.jpg",
+            "/picture/fj/17.jpg",
+            "/picture/fj/18.jpg",
+            "/picture/fj/19.jpg",
+            "/picture/fj/20.jpg",
+            "/picture/fj/21.jpg",
+            "/picture/fj/22.jpg",
+            "/picture/fj/23.jpg",
+            "/picture/fj/24.jpg",
+            "/picture/fj/25.jpg",
+            "/picture/fj/26.jpg",
+            "/picture/fj/27.jpg",
+            "/picture/fj/28.jpg",
+            "/picture/fj/29.jpg",
+            "/picture/fj/30.jpg",
+            "/picture/fj/31.jpg",
+            "/picture/fj/32.jpg",
+            "/picture/fj/33.jpg",
+            "/picture/fj/34.jpg",
+            "/picture/fj/35.jpg",
+            "/picture/fj/36.jpg",
+            "/picture/fj/37.jpg",
+            "/picture/fj/38.jpg",
+            "/picture/fj/39.jpg",
+            "/picture/fj/40.jpg",
+            "/picture/fj/41.jpg",
+            "/picture/fj/42.jpg",
+            "/picture/fj/43.jpg",
+            "/picture/fj/44.jpg",
+            "/picture/fj/45.jpg",
+            "/picture/fj/46.jpg",
+            "/picture/fj/47.jpg",
+            "/picture/fj/48.jpg",
+            "/picture/fj/49.jpg",
+            "/picture/fj/50.jpg",
+            "/picture/fj/51.jpg",
+            "/picture/fj/52.jpg",
+            "/picture/fj/53.jpg",
+            "/picture/fj/54.jpg",
+            "/picture/fj/55.jpg",
+            "/picture/fj/56.jpg",
+            "/picture/fj/57.jpg",
+            "/picture/fj/58.jpg",
+            "/picture/fj/59.jpg",
+            "/picture/fj/60.jpg",
+            "/picture/fj/61.jpg",
+            "/picture/fj/62.jpg",
+            "/picture/fj/63.jpg",
+            "/picture/fj/64.jpg",
+            "/picture/fj/65.jpg",
+            "/picture/fj/66.jpg",
+            "/picture/fj/67.jpg",
+            "/picture/fj/68.jpg",
+            "/picture/fj/69.jpg",
+            "/picture/fj/70.jpg",
+            "/picture/fj/71.jpg",
+            "/picture/fj/72.jpg",
+            "/picture/fj/73.jpg",
+            "/picture/fj/74.jpg",
+            "/picture/fj/75.jpg",
+            "/picture/fj/76.jpg",
+            "/picture/fj/77.jpg",
+            "/picture/fj/78.jpg",
+            "/picture/fj/79.jpg",
+            "/picture/fj/80.jpg",
+            "/picture/fj/81.jpg",
+            "/picture/fj/82.jpg",
+            "/picture/fj/83.jpg",
+            "/picture/fj/84.jpg",
+            "/picture/fj/85.jpg",
+            "/picture/fj/86.jpg",
+            "/picture/fj/87.jpg",
+            "/picture/fj/88.jpg",
+            "/picture/fj/89.jpg",
+            "/picture/fj/90.jpg",
+            "/picture/fj/91.jpg",
+            "/picture/fj/92.jpg",
+            "/picture/fj/93.jpg",
+            "/picture/fj/94.jpg",
+            "/picture/fj/95.jpg",
+            "/picture/fj/96.jpg",
+            "/picture/fj/97.jpg",
+            "/picture/fj/98.jpg",
+            "/picture/fj/99.jpg",
+            "/picture/fj/100.jpg"
+        ];
+        // 2. 随机选择逻辑
+        if (images.length > 0) {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const targetUrl = images[randomIndex];
+            // 3. 执行跳转
+            window.location.replace(targetUrl);
+        } else {
+            document.body.innerHTML = "<p style='color:red;'>ERROR</p>";
+        }
+    </script>
+</body>
+</html>

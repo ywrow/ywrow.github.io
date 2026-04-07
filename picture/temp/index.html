@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <p></p>
+    <script>
+        // 1. 定义图片列表
+        const images = [
+            "/picture/fj/1.jpg",
+            "/picture/fj/2.jpg"
+        ];
+        // 2. 随机选择逻辑
+        if (images.length > 0) {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const targetUrl = images[randomIndex];
+            // 3. 执行跳转
+            window.location.replace(targetUrl);
+        } else {
+            document.body.innerHTML = "<p style='color:red;'>错误：图片列表为空。</p>";
+        }
+    </script>
+</body>
+</html>

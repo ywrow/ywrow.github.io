@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>交互式水波纹背景</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #111; }
+        canvas { display: block; position: fixed; top: 0; left: 0; z-index: -1; }
+        .tips {
+            position: fixed; top: 20px; left: 20px; color: #fff; 
+            font-family: sans-serif; pointer-events: none; z-index: 999;
+            background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="tips">点击产生波纹 | 按 P 暂停自动效果</div>
+<canvas id="ripple-canvas"></canvas>
+<script>
+/**
+ * 交互式水波纹特效
+ * 功能：点击触发、自动触发、P键暂停
+ */
+(function() {
+    const canvas = document.getElementById('ripple-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let width, height;
+    let isPaused = false;
+    
+    // 背景图片（可选，这里使用渐变色代替，你也可以换成图片）
+    // 如果有背景图，建议先绘制图片，再对图片进行扭曲
+    
+    // 涟漪数组
+    let ripples = [];
+
+    // 初始化画布大小
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // 涟漪类
+    class Ripple {
+        constructor(x, y, isAuto = false) {
+            this.x = x;
+            this.y = y;
+            this.radius = 0;
+            // 自动产生的波纹稍微小一点，点击产生的大一点
+            this.maxRadius = isAuto ? Math.random() * 100 + 50 : 200; 
+            this.speed = isAuto ? 2 : 5; // 扩散速度
+            this.opacity = 1;
+            this.width = 20; // 波纹宽度
+        }
+
+        update() {
+            this.radius += this.speed;
+            // 随着半径变大，透明度降低
+            this.opacity = 1 - (this.radius / this.maxRadius);
+        }
+
+        draw(ctx) {
+            if (this.opacity <= 0) return;
+            
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(100, 200, 255, ${this.opacity * 0.5})`; // 波纹颜色
+            ctx.lineWidth = this.width;
+            ctx.stroke();
+            ctx.closePath();
+        }
+    }
+
+    // 核心：绘制扭曲效果
+    function drawDistortion() {
+        // 1. 获取当前画布图像数据
+        // 注意：为了性能，实际项目中通常使用两个 buffer 交替读写，这里为了代码简洁直接操作像素
+        // 如果你的背景是纯色或渐变色，可以直接重绘背景，然后只画波纹。
+        // 这里我们模拟一种“水面”效果，直接在黑色背景上画光晕
+        
+        // 清除画布 (重绘背景)
+        ctx.fillStyle = '#111'; 
+        ctx.fillRect(0, 0, width, height);
+
+        // 绘制一些静态背景元素（模拟背景图，防止画面太单调）
+        // 这里画几个简单的圆形作为参照物，方便你看清扭曲效果
+        ctx.fillStyle = '#222';
+        ctx.beginPath(); ctx.arc(width*0.2, height*0.3, 100, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(width*0.8, height*0.7, 150, 0, Math.PI*2); ctx.fill();
+
+        // 2. 绘制并扭曲波纹
+        // 真正的像素扭曲需要复杂的算法（读取像素->计算偏移->写入像素）。
+        // 为了保持代码轻量且流畅，这里使用一种视觉欺骗：
+        // 我们直接绘制半透明的波纹，并配合混合模式，看起来就像水面的反光。
+        
+        ripples.forEach(ripple => {
+            ripple.update();
+            ripple.draw(ctx);
+        });
+
+        // 移除已经消失的波纹
+        ripples = ripples.filter(r => r.opacity > 0);
+    }
+
+    // 动画循环
+    function animate() {
+        if (!isPaused) {
+            drawDistortion();
+            
+            // 自动产生波纹逻辑
+            if (Math.random() < 0.02) { // 2% 的概率每帧产生波纹
+                ripples.push(new Ripple(
+                    Math.random() * width, 
+                    Math.random() * height, 
+                    true
+                ));
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    // 事件监听：鼠标点击
+    canvas.addEventListener('mousedown', (e) => {
+        ripples.push(new Ripple(e.clientX, e.clientY, false));
+    });
+
+    // 事件监听：键盘 P 键
+    window.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 'p') {
+            isPaused = !isPaused;
+            // 可以在这里添加视觉提示，比如控制台输出
+            console.log(isPaused ? "自动效果已暂停" : "自动效果已恢复");
+        }
+    });
+
+    // 启动
+    animate();
+})();
+</script>
+</body>
+</html>

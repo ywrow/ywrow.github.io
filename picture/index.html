@@ -19,15 +19,15 @@
   <meta name="author" content="ywrow">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Gallery              &#x2F;* --- 基础设置 --- *&#x2F;         body {             margin: 0;             height: 100vh;             display: flex;             justify-content: center;             align-i">
+    <meta name="description" content="&#x2F;* --- 默认变量 (亮色模式) --- *&#x2F;     :root {         --bg-color: #ffffff;       &#x2F;* 白色背景 *&#x2F;         --text-color: #000000;     &#x2F;* 【修改点】纯黑字体，对比度最高 *&#x2F;         --hover-bg: #f0f0f0;       &#x2F;* 悬停时的浅灰背景 *&#x2F;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="page.title">
 <meta property="og:url" content="https://ywrow.github.io/picture/index.html">
 <meta property="og:site_name" content="Lins&#39; Blog">
-<meta property="og:description" content="Gallery              &#x2F;* --- 基础设置 --- *&#x2F;         body {             margin: 0;             height: 100vh;             display: flex;             justify-content: center;             align-i">
+<meta property="og:description" content="&#x2F;* --- 默认变量 (亮色模式) --- *&#x2F;     :root {         --bg-color: #ffffff;       &#x2F;* 白色背景 *&#x2F;         --text-color: #000000;     &#x2F;* 【修改点】纯黑字体，对比度最高 *&#x2F;         --hover-bg: #f0f0f0;       &#x2F;* 悬停时的浅灰背景 *&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-04T11:47:52.833Z">
-<meta property="article:modified_time" content="2026-05-04T11:47:52.833Z">
+<meta property="article:published_time" content="2026-05-04T12:21:43.222Z">
+<meta property="article:modified_time" content="2026-05-04T12:21:43.222Z">
 <meta property="article:author" content="ywrow">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -297,19 +297,19 @@
             <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-search"></i>
-                <span>検索</span>
+                <span>Suchen</span>
               </div>
             </a>
           </div>
         
         
           <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
-               data-label-light="ライト"
-               data-label-dark="ダーク">
+               data-label-light="Hell"
+               data-label-dark="Dunkel">
             <a href="javascript:;" aria-label="Color Toggle">
               <div class="mobile-grid-item">
                 <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
-                <span id="mobile-color-toggle-label">ダーク</span>
+                <span id="mobile-color-toggle-label">Dunkel</span>
               </div>
             </a>
           </div>
@@ -358,85 +358,72 @@
                 
 
 <article class="page-content">
-  <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>Gallery</title>
-    <style>
-        /* --- 基础设置 --- */
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff; /* 默认纯白背景 */
-            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #333;
-            -webkit-font-smoothing: antialiased; /* 字体平滑 */
-        }
+  <!-- 
+  Hexo-Fluid 适配版 - 纯黑字体
+  特点：白天纯黑字(更清晰)，晚上自动变白，极简居中
+-->
+<style>
+    /* --- 默认变量 (亮色模式) --- */
+    :root {
+        --bg-color: #ffffff;       /* 白色背景 */
+        --text-color: #000000;     /* 【修改点】纯黑字体，对比度最高 */
+        --hover-bg: #f0f0f0;       /* 悬停时的浅灰背景 */
+    }
 
-        /* --- 列表容器 --- */
-        .nav-container {
-            text-align: center;
-        }
+    /* --- Hexo-Fluid 暗色模式适配 --- */
+    body[data-user-color-scheme="dark"] {
+        --bg-color: #1f2d3d;       /* Fluid 深色背景 */
+        --text-color: #ffffff;     /* 晚上自动变为纯白，保证可读性 */
+        --hover-bg: #344b65;       /* 悬停时的深蓝灰背景 */
+    }
 
-        /* --- 链接样式 --- */
-        .nav-link {
-            display: block;
-            text-decoration: none;
-            color: #333;
-            font-size: 16px; /* 适中的字号 */
-            font-weight: 500;
-            padding: 12px 0;
-            position: relative;
-            letter-spacing: 0.5px; /* 稍微增加一点字间距，更透气 */
-            transition: color 0.3s ease;
-        }
+    /* --- 全局布局 --- */
+    .fluid-nav-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;             /* 占满全屏高度 */
+        width: 100%;
+        background-color: var(--bg-color);
+        transition: background-color 0.3s ease; /* 背景平滑过渡 */
+    }
 
-        /* --- 下划线动画效果 --- */
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 10px; /* 下划线位置 */
-            left: 50%;
-            background-color: #333;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+    /* --- 链接列表 --- */
+    .fluid-link-list {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
 
-        /* --- 悬停交互 --- */
-        .nav-link:hover {
-            color: #000;
-        }
+    .fluid-link-item {
+        display: block;
+        text-decoration: none;
+        color: var(--text-color);  /* 使用变量控制颜色 */
+        font-size: 18px;           /* 字号稍微调大了一点点，配合黑色更显眼 */
+        font-weight: 500;          /* 字体加粗一点点，让黑色更有质感 */
+        padding: 10px 20px;
+        margin: 8px 0;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        letter-spacing: 1px;
+    }
 
-        .nav-link:hover::after {
-            width: 100%; /* 下划线从中间向两边展开 */
-        }
+    /* --- 悬停效果 --- */
+    .fluid-link-item:hover {
+        background-color: var(--hover-bg);
+        transform: scale(1.05);    /* 悬停时微微放大 */
+        cursor: pointer;
+    }
+</style>
 
-        /* --- 移动端微调 --- */
-        @media (max-width: 600px) {
-            .nav-link {
-                font-size: 15px;
-                padding: 10px 0;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="nav-container">
-        <a href="/picture/fj" class="nav-link" title="风景?">风景</a>
-        <a href="/picture/ycy" class="nav-link" title="hyw?">二次元</a>
-        <a href="/picture/tx" class="nav-link" title="头像?">头像</a> 
-
+<div class="fluid-nav-wrapper">
+    <div class="fluid-link-list">
+        <a href="/picture/fj" class="fluid-link-item">风景</a>
+        <a href="/picture/ycy" class="fluid-link-item">二次元</a>
+        <a href="/picture/tx" class="fluid-link-item">头像</a>
     </div>
-
-</body>
-</html>
+</div>
 
   
 
@@ -463,7 +450,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -471,7 +458,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">キーワード</label>
+          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -564,7 +551,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">ブログは JavaScript を有効にすると最適に機能します</div>
+    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
   </noscript>
 </body>
 </html>

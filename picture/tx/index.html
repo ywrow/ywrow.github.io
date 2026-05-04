@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <p></p>
+    <script>
+        // 1. 定义图片列表
+        const images = [
+		"/picture/tx/070ae75034a8401a63bdda3bae2727f5.jpg",
+		"/picture/tx/daf6f39a53ad17fd7a945f7b6fec6f97.jpg",
+		"/picture/tx/09f511a5e4c4c6a70645e28fef46e8ad.jpg",
+		"/picture/tx/78e7dff543dd4756991953254ee1fbd8.jpg",
+		"/picture/tx/bc9582789d8459e10df2f3fc3b5b79bf.jpg",
+		"/picture/tx/97004962f4f7cd81a270a6786ae45134.jpg",
+		"/picture/tx/00b10ae4dae1cf5a84e3aa948a695621.jpg",
+		"/picture/tx/b8aec11b27f90cf5a15b042360dbf3f7.jpg",
+		"/picture/tx/6d3416fd7511161e2f734effcb20706b.jpg",
+		"/picture/tx/259c535f5e967b49d84f0757e3349277.jpg",
+		"/picture/tx/928cd4461abf5ef9bfc7f35a8da34baf.jpg",
+		"/picture/tx/13aa186b09a12ffb0ac02725d788a0cd.jpg",
+		"/picture/tx/6ca6d4b2d552c5e18d002746bd5e37c1.jpg",
+		"/picture/tx/179e49c574e307ad56280b2dddc4ee23.jpg",
+		"/picture/tx/c4da94fec451c24b8b40abd13f37baa0.jpg",
+		"/picture/tx/f3fc49c52b70d6f64d7cc515726a520b.jpg",
+		"/picture/tx/f566b631b95bc936b4d0518834e64a34.jpg",
+		"/picture/tx/89a1235c0be938ef5c0418fd4e0ad735.jpg",
+		"/picture/tx/6bca26c6ec6b2438032b607f28a10e94.jpg",
+		"/picture/tx/9511cdf62901eb6aa68b572a4892b7d9.jpg",
+		"/picture/tx/0fda015c370738031da0f9dc15b4d75b.jpg",
+		"/picture/tx/4085af19967ff213b99c4db53061741f.jpg",
+		"/picture/tx/0077d054ca29e5a39bf2abe7a7202cd1.jpg",
+		"/picture/tx/58235277c82052ae1b0fdd641b4d6adb.jpg",
+		"/picture/tx/20559b1fb7aff05fa128868c69ede84b.jpg",
+		"/picture/tx/7d16995cb228a7a221ea522cb2d87d28.jpg",
+		"/picture/tx/6e917d7d583bcb97fb58ce15b42971c9.jpg",
+		"/picture/tx/8d26e52c45448f3d6a867c54a0c3515d.jpg",
+		"/picture/tx/0dbd14aba03bf696e2bdd66a0950333f.jpg",
+		"/picture/tx/ad6f7756d78583aa6fea1b8cbeeac555.jpg",
+		"/picture/tx/84348b372edf4f5c10803cf621747d20.jpg",
+		"/picture/tx/e393ce6e5c4d7e37ea0fa0ebfb837d14.jpg",
+		"/picture/tx/71630ffebf1d518feddf1f3aa3a1d8ba.jpg",
+		"/picture/tx/e60eb02b6214df098c4669144397d239.jpg",
+		"/picture/tx/23632263da2efdba20ed9938134701a5.jpg",
+		"/picture/tx/87659f1158ed71a1f9224e31780999ea.jpg",
+		"/picture/tx/84bfea21487012dde7f215122aa7643d.jpg",
+		"/picture/tx/b941db8f59fe4b6e95542d096230c348.jpg",
+		"/picture/tx/ea5740fec878bc072cc2626810173718.jpg",
+		"/picture/tx/69f7dbe35a16e4debc89dd39ae692c87.jpg",
+		"/picture/tx/ec53ce228a345ab8f4c572b28fa92f7a.jpg",
+		"/picture/tx/3ceb17983f9cc5cdbdcc6248ad4fed8a.jpg",
+		"/picture/tx/8fda98f21cb44f6cc191f1cb8f9b0966.jpg",
+		"/picture/tx/fee337bd6fc41176de6cb3f420984271.jpg",
+		"/picture/tx/25ec76eadc925044f3b4f038be92ea14.jpg",
+		"/picture/tx/208db5740abd3215546078bb465d1a0f.jpg",
+		"/picture/tx/d1fcf59ae7f6bf60ede642613697d2f5.jpg",
+		"/picture/tx/63c02ca139eb418efe2a57f322d45ab0.jpg",
+		"/picture/tx/45b24658244d41708d59019789fd9d57.jpg",
+		"/picture/tx/4e48b1cdb91a2f266078999904f26304.jpg",
+		"/picture/tx/de6b8b61537bd1ee719333a1f8492b7b.jpg",
+		"/picture/tx/71f5f2f32dc67fbae085642665bf5213.jpg",
+		"/picture/tx/91187e0f78d1f3605bbc3f9f70ab6199.jpg",
+		"/picture/tx/6a519ab392cb07c1609dbb5469070989.jpg",
+		"/picture/tx/035fdf2d83b65bf64dd1b20b06e59d6d.jpg",
+		"/picture/tx/4b60e5e6cdd037f17dfdcca708faa71e.jpg",
+		"/picture/tx/bb94c19ddea5804835e8533d1d334c8d.jpg",
+		"/picture/tx/a9e11230b28965d0b54da35a33ab2b8d.jpg",
+		"/picture/tx/3943aafab071ce87aeb708c7ca64b1e8.jpg",
+		"/picture/tx/b47b89f898830b34591be9c0cfa66f98.jpg",
+		"/picture/tx/df8b08b963b3474bb4ed30f1f8bf5502.jpg",
+		"/picture/tx/24dfeeff3ce6ae6d3f88882d9bf01f65.jpg",
+		"/picture/tx/f89560500531ddffe592458f1c7f7319.jpg",
+		"/picture/tx/551e52781768bd2c22b35673ecd90f91.jpg",
+		"/picture/tx/c6ce9362d9094287a07ff3e01b13551a.jpg",
+		"/picture/tx/3a4a07ff18d88180087b76fae56c2d86.jpg",
+		"/picture/tx/8f7d902b8ae4e09845ab26aab331c7e5.jpg",
+		"/picture/tx/3f69321289326ca71be4dd03fdd9bcaa.jpg",
+		"/picture/tx/f17cd2ac8fb30615219470007b2ed810.jpg",
+		"/picture/tx/ae1d123b9eae304dcdc75576155c0f54.jpg",
+		"/picture/tx/d739368efe132f90ff29ea5da82c860f.jpg",
+		"/picture/tx/cf9cc1953f983f441aac9a3db0dd3fa1.jpg",
+		"/picture/tx/81c4b87c29b0a0a7b9542fd432045275.jpg",
+		"/picture/tx/35560e4a237481f2045eef152c4ffca9.jpg",
+		"/picture/tx/da7981aea730bf0c0409e2072d067ef9.jpg",
+		"/picture/tx/d3f20d32a395a56572078acd741b1c7d.jpg",
+		"/picture/tx/036f870168a22936de15c75f5834427b.jpg",
+		"/picture/tx/0e478c22edbdb8746a87a2d774d7fcca.jpg",
+		"/picture/tx/eadb1a7d84a863ea1b840bd027a94a20.jpg",
+		"/picture/tx/82ab331d4c0d27ad3688deaf05ce24cc.jpg",
+		"/picture/tx/daab9498388c639dc0725ba486ffcc87.jpg",
+		"/picture/tx/0078bde454dc149090ff9d4f3885ad9f.jpg",
+		"/picture/tx/c8ea559448b6bb50da5863c7eaf71913.jpg",
+		"/picture/tx/9cb6e42cebbd7f2dc0bdf007ddc57fd7.jpg",
+		"/picture/tx/98146e4a71565cd8f46a0b56350665cb.jpg",
+		"/picture/tx/abc2183f9708647973b5abec849bfb96.jpg",
+		"/picture/tx/8b1e08c6d515530c8a9f57b8825286b5.jpg",
+		"/picture/tx/aa55a29bbdfa395dd5e31325b6954967.jpg",
+		"/picture/tx/a824719203f0b549d032f191d2053f14.jpg",
+		"/picture/tx/37216e5282d0e2ccc8b8030cc009d543.jpg",
+		"/picture/tx/3e777a86c84cc48ba60e61f5946cd5d6.jpg",
+		"/picture/tx/002df2610fbf59f8b7a6759fb89b5e12.jpg",
+		"/picture/tx/3d1468f54b372de483656a7fc3a611a6.jpg",
+		"/picture/tx/eed6a3bb5e19962caeb3f6b5d33760bf.jpg",
+		"/picture/tx/b9b05619ae8bf4270a238386894cd380.jpg",
+		"/picture/tx/c44fcb7455343a0da02884300a9f8db7.jpg",
+		"/picture/tx/3f01f2be919333bd51c35b975865c9be.jpg",
+		"/picture/tx/1a19e084ac2873deb43b10863fed15e5.jpg",
+		"/picture/tx/6c810b095f90168059ffbc6b7803bbfd.jpg",
+		"/picture/tx/c97dbd6f01504df2e62eebc54ccbfd11.jpg"
+        ];
+        // 2. 随机选择逻辑
+        if (images.length > 0) {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const targetUrl = images[randomIndex];
+            // 3. 执行跳转
+            window.location.replace(targetUrl);
+        } else {
+            document.body.innerHTML = "<p style='color:red;'>错误：图片列表为空。</p>";
+        }
+    </script>
+</body>
+</html>
